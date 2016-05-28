@@ -4,18 +4,29 @@
 #
 Name     : R-yaml
 Version  : 2.1.13
-Release  : 13
+Release  : 14
 URL      : http://cran.r-project.org/src/contrib/yaml_2.1.13.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/yaml_2.1.13.tar.gz
 Summary  : Methods to convert R data to YAML and back
 Group    : Development/Tools
 License  : NCSA
+Requires: R-yaml-lib
 Requires: R-testthat
+Requires: R-crayon
+BuildRequires : R-crayon
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
 %description
 No detailed description available
+
+%package lib
+Summary: lib components for the R-yaml package.
+Group: Libraries
+
+%description lib
+lib components for the R-yaml package.
+
 
 %prep
 %setup -q -c -n yaml
@@ -25,13 +36,20 @@ No detailed description available
 %install
 rm -rf %{buildroot}
 export LANG=C
+export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library yaml
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=intel.com,localhost
+export no_proxy=localhost
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library yaml
 
@@ -61,8 +79,11 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/yaml/html/R.css
 /usr/lib64/R/library/yaml/implicit.re
 /usr/lib64/R/library/yaml/libs/symbols.rds
-/usr/lib64/R/library/yaml/libs/yaml.so
 /usr/lib64/R/library/yaml/tests/files/test.yml
 /usr/lib64/R/library/yaml/tests/test_as_yaml.R
 /usr/lib64/R/library/yaml/tests/test_yaml_load.R
 /usr/lib64/R/library/yaml/tests/test_yaml_load_file.R
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/R/library/yaml/libs/yaml.so
