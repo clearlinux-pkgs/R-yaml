@@ -4,17 +4,21 @@
 #
 Name     : R-yaml
 Version  : 2.1.13
-Release  : 14
+Release  : 15
 URL      : http://cran.r-project.org/src/contrib/yaml_2.1.13.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/yaml_2.1.13.tar.gz
 Summary  : Methods to convert R data to YAML and back
 Group    : Development/Tools
 License  : NCSA
 Requires: R-yaml-lib
-Requires: R-testthat
-Requires: R-crayon
-BuildRequires : R-crayon
-BuildRequires : R-testthat
+Requires: R-R6
+Requires: R-memoise
+Requires: R-digest
+Requires: R-magrittr
+BuildRequires : R-R6
+BuildRequires : R-digest
+BuildRequires : R-magrittr
+BuildRequires : R-memoise
 BuildRequires : clr-R-helpers
 
 %description
@@ -47,6 +51,7 @@ mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library yaml
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
