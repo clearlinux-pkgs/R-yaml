@@ -4,16 +4,15 @@
 #
 Name     : R-yaml
 Version  : 2.2.0
-Release  : 51
+Release  : 52
 URL      : https://cran.r-project.org/src/contrib/yaml_2.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/yaml_2.2.0.tar.gz
 Summary  : Methods to Convert R Data to YAML and Back
 Group    : Development/Tools
 License  : BSD-3-Clause MIT
-Requires: R-yaml-lib
-Requires: R-RUnit
+Requires: R-yaml-lib = %{version}-%{release}
 BuildRequires : R-RUnit
-BuildRequires : clr-R-helpers
+BuildRequires : buildreq-R
 
 %description
 No detailed description available
@@ -34,11 +33,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532573007
+export SOURCE_DATE_EPOCH=1552836836
 
 %install
+export SOURCE_DATE_EPOCH=1552836836
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1532573007
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -73,8 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library yaml|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  yaml || :
 
 
 %files
@@ -102,7 +100,7 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/yaml/html/00Index.html
 /usr/lib64/R/library/yaml/html/R.css
 /usr/lib64/R/library/yaml/implicit.re
-/usr/lib64/R/library/yaml/libs/symbols.rds
+/usr/lib64/R/library/yaml/tests/RUnit.R
 /usr/lib64/R/library/yaml/tests/files/test.yml
 /usr/lib64/R/library/yaml/tests/test_as_yaml.R
 /usr/lib64/R/library/yaml/tests/test_read_yaml.R
