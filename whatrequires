@@ -4,6 +4,7 @@ R-bold
 R-config
 R-csvy
 R-htmlwidgets
+R-knitr
 R-loo
 R-natserv
 R-pkgdown
@@ -14,5 +15,7 @@ R-rredlist
 R-rsconnect
 R-rstanarm
 R-rstantools
+R-threejs
+R-vcr
 R-wikitaxa
 R-worrms
