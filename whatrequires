@@ -15,7 +15,10 @@ R-rredlist
 R-rsconnect
 R-rstanarm
 R-rstantools
+R-tensorflow
 R-threejs
+R-usethis
 R-vcr
 R-wikitaxa
 R-worrms
+apache-spark
