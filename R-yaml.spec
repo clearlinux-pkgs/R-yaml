@@ -4,7 +4,7 @@
 #
 Name     : R-yaml
 Version  : 2.2.0
-Release  : 59
+Release  : 60
 URL      : https://cran.r-project.org/src/contrib/yaml_2.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/yaml_2.2.0.tar.gz
 Summary  : Methods to Convert R Data to YAML and Back
