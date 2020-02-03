@@ -1,24 +1,15 @@
 # This file contains recursive sources that require this package
-R-DT
-R-bold
 R-config
+R-covr
 R-csvy
 R-htmlwidgets
 R-knitr
-R-loo
-R-natserv
 R-pkgdown
-R-rgl
-R-ritis
 R-rmarkdown
-R-rredlist
 R-rsconnect
-R-rstanarm
 R-rstantools
 R-tensorflow
-R-threejs
+R-tfruns
 R-usethis
 R-vcr
-R-wikitaxa
-R-worrms
 apache-spark
