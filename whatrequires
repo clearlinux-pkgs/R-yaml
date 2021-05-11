@@ -2,12 +2,12 @@
 R-config
 R-covr
 R-csvy
+R-downlit
 R-htmlwidgets
 R-knitr
 R-pkgdown
 R-rmarkdown
 R-rsconnect
-R-rstantools
 R-tensorflow
 R-tfruns
 R-usethis

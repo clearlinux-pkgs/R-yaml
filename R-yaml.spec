@@ -4,13 +4,15 @@
 #
 Name     : R-yaml
 Version  : 2.2.1
-Release  : 69
+Release  : 70
 URL      : https://cran.r-project.org/src/contrib/yaml_2.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/yaml_2.2.1.tar.gz
 Summary  : Methods to Convert R Data to YAML and Back
 Group    : Development/Tools
 License  : BSD-3-Clause MIT
 Requires: R-yaml-lib = %{version}-%{release}
+Requires: R-RUnit
+BuildRequires : R-RUnit
 BuildRequires : buildreq-R
 
 %description
@@ -33,10 +35,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589566140
+export SOURCE_DATE_EPOCH=1620764637
 
 %install
-export SOURCE_DATE_EPOCH=1589566140
+export SOURCE_DATE_EPOCH=1620764637
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -113,3 +115,4 @@ R CMD check --no-manual --no-examples --no-codoc yaml || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/yaml/libs/yaml.so
 /usr/lib64/R/library/yaml/libs/yaml.so.avx2
+/usr/lib64/R/library/yaml/libs/yaml.so.avx512
