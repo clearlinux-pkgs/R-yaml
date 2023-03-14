@@ -4,7 +4,7 @@
 #
 Name     : R-yaml
 Version  : 2.3.7
-Release  : 88
+Release  : 89
 URL      : https://cran.r-project.org/src/contrib/yaml_2.3.7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/yaml_2.3.7.tar.gz
 Summary  : Methods to Convert R Data to YAML and Back
@@ -13,9 +13,6 @@ License  : BSD-3-Clause MIT
 Requires: R-yaml-lib = %{version}-%{release}
 Requires: R-yaml-license = %{version}-%{release}
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 No detailed description available
@@ -46,10 +43,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1674528612
+export SOURCE_DATE_EPOCH=1678825184
 
 %install
-export SOURCE_DATE_EPOCH=1674528612
+export SOURCE_DATE_EPOCH=1678825184
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-yaml
 cp %{_builddir}/yaml/COPYING %{buildroot}/usr/share/package-licenses/R-yaml/3476e3fc26cf5478584727491080dae1c4e057e4 || :
